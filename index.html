@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Face Mesh Demo</title>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+
+    <style>
+    .canvas-container {
+        position: relative;
+        width: 720px;
+        height: 480px;
+    }
+    .face-container {
+        position: relative;
+        width: 720px;
+        height: 480px;
+    }
+    .canvas-container canvas {
+        position: absolute;
+    }
+    .container-image {
+        position: relative;
+        width: 720px;
+        height: 480px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <div class="columns">
+            <div class="column">
+                <article class="panel">
+                <div class="canvas-container">
+                    <canvas id="output"></canvas>
+                    <canvas id="overlay"></canvas>
+                </div>
+                    <video id="video" autoplay width="720px" height="480px" style="display: none;"></video>
+                </article>
+                <article class="panel">
+                    <div class="face-container">
+                        <canvas id="crop"></canvas>
+                    </div>
+                </article>
+            </div>
+            <div class="column">
+                <article class="panel" style="height: 200px;">
+                    <p class="panel-heading">
+                        Options
+                    </p>
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" id="show-glasses">
+                            <span class="ml-2">Show glasses</span>
+                        </label>
+                    </div>
+                    <div class="control">
+                        <button id="click-photo">Take photo</button>
+                    </div>
+                    <div class="control">
+                        <button id="click-photo-big">Take photo from big</button>
+                    </div>
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" id="show-bounding-box">
+                            <span class="ml-2">Show bounding box</span>
+                        </label>
+                    </div>
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" id="show-face-croped">
+                            <span class="ml-2">Show face</span>
+                        </label>
+                    </div>
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" id="show-mesh">
+                            <span class="ml-2">Show Mesh</span>
+                        </label>
+                    </div>
+
+                </article>
+                <article class="panel container-image">
+                    <p class="panel-heading">
+                        Images
+                    </p>
+                    <img id="photo" alt="The screen capture will appear in this box.">
+                    <canvas id="face" width="720px" height="480px" hidden></canvas>
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Custom scripts -->
+<script type="text/javascript"></script>
+<!-- Require the peer dependencies of face-landmarks-detection. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+<!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.123.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.123.0/examples/js/loaders/GLTFLoader.js"></script>
+
+
+<script src="triangles.js"></script>
+<script src="tesselas.js"></script>
+<script src="index.js" defer></script>
+
+</html>
+
+
